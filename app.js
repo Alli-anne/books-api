@@ -7,11 +7,16 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const { initDb } = require('./database/connect');
 const bookRoutes = require('./routes/books.js');
+const cors = require('cors');
 
 
 
 // app.use('/api/contacts', contactRoutes);
-
+app.use(cors({
+  origin: '*', // or specify your frontend/render URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use((req, res, next) => {
@@ -21,6 +26,11 @@ app.use((req, res, next) => {
 app.use('/', bookRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+app.use(cors({
+  origin: '*', // or specify your frontend/render URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 initDb()
   .then(() => {
