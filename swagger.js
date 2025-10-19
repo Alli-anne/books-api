@@ -6,7 +6,7 @@ const doc = {
     title: 'Books API',
     description: 'A simple API for managing books',
   },
-  host: 'localhost:3000',
+  host: 'books-api-8sff.onrender.com',
   schemes: ['http'],
 };
 
