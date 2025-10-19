@@ -8,7 +8,7 @@
   "host": "books-api-8sff.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/books": {
