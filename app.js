@@ -1,37 +1,29 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser'); 
 const port = process.env.PORT || 3000;
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const { initDb } = require('./database/connect');
-const bookRoutes = require('./routes/books.js');
+const bookRoutes = require('./routes/books');
 const cors = require('cors');
 
-
-
-// app.use('/api/contacts', contactRoutes);
+// CORS
 app.use(cors({
-  origin: '*', // or specify your frontend/render URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: '*',
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization']
 }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  next();
-});
-app.use('/', bookRoutes);
+
+// Body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routes
+app.use('/api', bookRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use(cors({
-  origin: '*', // or specify your frontend/render URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
+// Init DB and start server
 initDb()
   .then(() => {
     app.listen(port, () => {
@@ -41,3 +33,4 @@ initDb()
   .catch((err) => {
     console.error("Failed to connect to DB", err);
   });
+

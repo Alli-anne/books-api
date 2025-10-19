@@ -7,7 +7,7 @@ const doc = {
     description: 'A simple API for managing books',
   },
   host: 'books-api-8sff.onrender.com',
-  schemes: ['http'],
+  schemes: ['https'],
 };
 
 const outputFile = './swagger.json'; // this will be generated
