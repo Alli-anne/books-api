@@ -8,8 +8,8 @@ const utils = require('../validation/utils');
 router.get('/books',  controllers.getAllBooks);
 router.post('/test', utils.errorHandler,controllers.addTestBook);
 router.get('/books/:id', utils.errorHandler, controllers.getBookID);
-router.put('/books/:id',   controllers.updateBook);
-router.delete('/books/:id',   controllers.delteBook);
+router.put('/books/:id',   utils.errorHandler, controllers.updateBook);
+router.delete('/books/:id',   utils.errorHandler, controllers.delteBook);
 
 
 // Example P
