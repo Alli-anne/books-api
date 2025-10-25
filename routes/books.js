@@ -5,11 +5,11 @@ const utils = require('../validation/utils');
 
 
 // Example GET
-router.get('/books',  controllers.getAllBooks);
-router.post('/test', utils.errorHandler,controllers.addTestBook);
-router.get('/books/:id', utils.errorHandler, controllers.getBookID);
-router.put('/books/:id',   utils.errorHandler, controllers.updateBook);
-router.delete('/books/:id',   utils.errorHandler, controllers.delteBook);
+router.get('/books',  utils.missingString, controllers.getAllBooks);
+router.post('/test', utils.missingString,controllers.addTestBook);
+router.get('/books/:id', utils.missingString, controllers.getBookID);
+router.put('/books/:id',   utils.missingString, controllers.updateBook);
+router.delete('/books/:id',   utils.missingString, controllers.delteBook);
 
 
 // Example P
