@@ -38,7 +38,7 @@ const updateBook = async (req, res) => {
     const result = await db.collection('books').updateOne({ _id: objectId }, { $set: { title, author, year, genre } });
     res.json({ message: 'Book updated!', id: objectId });
 };
-const delteBook = async (req, res) => {
+const deleteBook = async (req, res) => {
     const db = getDb();
     const id = req.params.id;
     const objectId = new ObjectId(id);
@@ -47,4 +47,4 @@ const delteBook = async (req, res) => {
 };
 
 
-module.exports = { getAllBooks, addTestBook, getBookID, updateBook, delteBook };
+module.exports = { getAllBooks, addTestBook, getBookID, updateBook, deleteBook };
