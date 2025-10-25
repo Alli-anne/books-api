@@ -1,4 +1,5 @@
 const utils = {};
+const { ObjectId } = require('mongodb');
 
 utils.validateBook = (req, res, next) => {
     if (req.method === 'POST' || req.method === 'PUT')  {
@@ -26,7 +27,7 @@ utils.validateBookId = (req, res, next) => {
     const { id } = req.params;
 
     if (!id) {
-        return res.status(400).json({ error: 'Missing required fields' });
+        return res.status(400).json({ error: 'Missing book ID' });
     }
 
     if (!ObjectId.isValid(id)) {
