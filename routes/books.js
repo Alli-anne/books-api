@@ -8,9 +8,18 @@ const utils = require('../validation/utils');
 router.get('/books',   controllers.getAllBooks);
 router.post('/test', utils.validateBook,controllers.addTestBook);
 router.get('/books/:id', utils.validateBookId, controllers.getBookID);
-router.put('/books/:id',   utils.validateBook, utils.validateBookId, controllers.updateBook);
-router.delete('/books/:id',   utils.validateBookId, controllers.deleteBook);
+router.put(
+  '/books/:id',
+  utils.validateBookId,   // checks ID first
+  utils.validateBook,     // checks body fields
+  controllers.updateBook
+);
 
+router.delete(
+  '/books/:id',
+  utils.validateBookId,   // only need ID check
+  controllers.deleteBook
+);
 
 // Example P
 
