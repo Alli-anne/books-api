@@ -5,7 +5,7 @@ const utils = require('../validation/utils');
 
 
 // Example GET
-router.get('/books', utils.errorHandler, controllers.getAllBooks);
+router.get('/books',  controllers.getAllBooks);
 router.post('/test', utils.errorHandler,controllers.addTestBook);
 router.get('/books/:id', utils.errorHandler, controllers.getBookID);
 router.put('/books/:id',   controllers.updateBook);

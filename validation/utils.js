@@ -1,9 +1,6 @@
 const utils = {};
 
 utils.errorHandler = (req, res, next) => {
-if (!req.body.name || typeof req.body.name !== 'string') {
-    return res.status(400).json({ error: 'Name is required and must be a string' });
-  }
 try{
     const book = Book.findById(req.params.id);
     if (!book) {
