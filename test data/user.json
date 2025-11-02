@@ -1,0 +1,22 @@
+[
+  {
+    "username": "alice_smith",
+    "password": "password123"
+  },
+  {
+    "username": "bob_jones",
+    "password": "securePass!"
+  },
+  {
+    "username": "charlie_brown",
+    "password": "letmein456"
+  },
+  {
+    "username": "danielle_lee",
+    "password": "testUser987"
+  },
+  {
+    "username": "edward_miller",
+    "password": "booklover2025"
+  }
+]
