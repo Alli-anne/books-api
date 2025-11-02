@@ -1,0 +1,52 @@
+[
+  {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "year": 1960,
+    "genre": "Fiction",
+    "description": "A young girl growing up in the racially charged South learns valuable lessons about justice and empathy.",
+    "rating": 4.8,
+    "publisher": "J.B. Lippincott & Co.",
+    "pageCount": 281
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "year": 1949,
+    "genre": "Dystopian",
+    "description": "A chilling portrayal of a totalitarian society under constant surveillance and control.",
+    "rating": 4.7,
+    "publisher": "Secker & Warburg",
+    "pageCount": 328
+  },
+  {
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "year": 1925,
+    "genre": "Classic",
+    "description": "A tragic story of love, wealth, and the American Dream set in the Roaring Twenties.",
+    "rating": 4.5,
+    "publisher": "Charles Scribner's Sons",
+    "pageCount": 180
+  },
+  {
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "year": 1937,
+    "genre": "Fantasy",
+    "description": "Bilbo Baggins embarks on an unexpected adventure filled with dragons, treasure, and friendship.",
+    "rating": 4.9,
+    "publisher": "George Allen & Unwin",
+    "pageCount": 310
+  },
+  {
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "year": 1813,
+    "genre": "Romance",
+    "description": "Elizabeth Bennet navigates love, reputation, and class in 19th-century England.",
+    "rating": 4.6,
+    "publisher": "T. Egerton, Whitehall",
+    "pageCount": 279
+  }
+]
