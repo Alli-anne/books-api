@@ -7,6 +7,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const { initDb } = require('./database/connect');
 const bookRoutes = require('./routes/books.js');
+const userRoutes = require('./routes/user.js');
 const cors = require('cors');
 
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', bookRoutes);
+app.use('/users', userRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(cors({
