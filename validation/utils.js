@@ -23,7 +23,18 @@ utils.validateBook = (req, res, next) => {
 
 }
 
-utils.validateBookId = (req, res, next) => {
+utils.validateUser = (req, res, next) => {
+    if (req.method === 'POST' || req.method === 'PUT')  {
+        const { username, password } = req.body;
+
+        if (!username || !password){
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+        next();
+    }
+}
+
+utils.validateId = (req, res, next) => {
     const { id } = req.params;
 
     if (!id) {

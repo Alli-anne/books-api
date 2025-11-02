@@ -5,10 +5,10 @@ const utils = require('../validation/utils');
 
 
 router.get("/user", userControllers.getAllUsers);
-router.get("user/:id", userControllers.getUserID);
-router.post("/user", userControllers.addUser);
-router.put("/user/:id", userControllers.updateUser);
-router.delete("/user/:id", userControllers.deleteUser);
+router.get("user/:id", utils.validateId, userControllers.getUserID);
+router.post("/user", utils.validateUser, userControllers.addUser);
+router.put("/user/:id", utils.validateUser, utils.validateId, userControllers.updateUser);
+router.delete("/user/:id", utils.validateId, userControllers.deleteUser);
 
 module.exports = router;
 
