@@ -74,6 +74,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -130,6 +133,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -165,14 +171,11 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
           }
         }
       }
     },
-    "user/{id}": {
+    "/user/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -191,9 +194,7 @@
             "description": "Bad Request"
           }
         }
-      }
-    },
-    "/user/{id}": {
+      },
       "put": {
         "description": "",
         "parameters": [
