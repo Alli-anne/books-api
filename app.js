@@ -1,4 +1,5 @@
 require('dotenv').config();
+const session = require('express-session');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser'); 
@@ -9,8 +10,17 @@ const { initDb } = require('./database/connect');
 const bookRoutes = require('./routes/books.js');
 const userRoutes = require('./routes/user.js');
 const cors = require('cors');
+const passport = require('passport'); 
+require('./passportConfig');
 
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // app.use('/api/contacts', contactRoutes);
@@ -23,6 +33,8 @@ app.use((req, res, next) => {
 });
 app.use('/', bookRoutes);
 app.use('/', userRoutes);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(cors({
