@@ -11,6 +11,6 @@ const doc = {
 };
 
 const outputFile = './swagger.json'; // this will be generated
-const endpointsFiles = ['./routes/books.js']; // adjust path if your routes differ
+const endpointsFiles = ['./routes/books.js', './routes/user.js']; // adjust path if your routes differ
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
