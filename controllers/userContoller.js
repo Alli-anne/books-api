@@ -4,7 +4,6 @@ const { ObjectId } = require('mongodb');
 
 
 
-
 const getAllUsers = async (req, res) =>{
     const db = getDb();
     const users = await db.collection('users').find().toArray();
@@ -43,4 +42,16 @@ const deleteUser = async (req, res) => {
     res.json({ message: 'User deleted!', id: objectId });
 };
 
-module.exports = { getAllUsers, getUserID, addUser, updateUser, deleteUser };
+const googleAuth = (req, res) => {
+    res.redirect('http://localhost:3000/auth/google');
+};
+
+const googleAuthCallback = (req, res) => {
+    res.redirect('http://localhost:3000/auth/google/callback');
+};
+
+const login = (req, res) => {
+    res.render('login');
+};
+
+module.exports = { getAllUsers, getUserID, addUser, updateUser, deleteUser, googleAuth, googleAuthCallback, login };
