@@ -8,11 +8,14 @@ const passport = require('passport');
 
 router.get("/user", userControllers.getAllUsers);
 router.get("/user/:id", utils.validateId, userControllers.getUserID);
-router.post("/user", userControllers.addUser);
-router.put("/user/:id", utils.validateUser, utils.validateId, userControllers.updateUser);
-router.delete("/user/:id", utils.validateId, userControllers.deleteUser);
+router.post("/user", middleware.ensureAuthenticated, userControllers.addUser);
+router.put("/user/:id",   middleware.ensureAuthenticated, utils.validateUser, utils.validateId, userControllers.updateUser);
+router.delete("/user/:id",  middleware.ensureAuthenticated, utils.validateId, userControllers.deleteUser);
+
 
 router.get("/login", userControllers.login);
+
+router.get("/logout",  middleware.ensureAuthenticated, userControllers.logout);
 
 router.get("/auth/google", passport.authenticate('google', { scope: ['profile', 'email'] }));
 

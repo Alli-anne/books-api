@@ -51,11 +51,20 @@ const googleAuthCallback = (req, res) => {
 };
 
 const login = (req, res) => {
-    res.render('login');
+    res.redirect('/auth/google');
 };
 
 const afterGoogleLogin = (req, res) => {
   // req.user is available here
   res.redirect('/dashboard');
 };
-module.exports = { getAllUsers, getUserID, addUser, updateUser, deleteUser, googleAuth, googleAuthCallback, login, afterGoogleLogin };
+
+const logout = (req, res) => {
+   req.logout(function(err) {
+     if (err) { return next(err); }
+     res.redirect('/books');
+   });
+};
+
+
+module.exports = { getAllUsers, getUserID, addUser, updateUser, deleteUser, googleAuth, googleAuthCallback, login, afterGoogleLogin, logout };

@@ -7,10 +7,11 @@ const middleware = require('../middleware/authMiddleware');
 
 
 // Example GET
-router.get('/books', middleware.ensureAuthenticated, controllers.getAllBooks);
-router.post('/test', utils.validateBook,controllers.addTestBook);
-router.get('/books/:id', utils.validateId, controllers.getBookID);
+router.get('/books', controllers.getAllBooks);
+router.post('/books', middleware.ensureAuthenticated, utils.validateBook,controllers.addTestBook);
+router.get('/books/:id', middleware.ensureAuthenticated, utils.validateId, controllers.getBookID);
 router.put('/books/:id', 
+    middleware.ensureAuthenticated,
     utils.validateBook,
      utils.validateId, 
      controllers.updateBook);
