@@ -54,4 +54,8 @@ const login = (req, res) => {
     res.render('login');
 };
 
-module.exports = { getAllUsers, getUserID, addUser, updateUser, deleteUser, googleAuth, googleAuthCallback, login };
+const afterGoogleLogin = (req, res) => {
+  // req.user is available here
+  res.redirect('/dashboard');
+};
+module.exports = { getAllUsers, getUserID, addUser, updateUser, deleteUser, googleAuth, googleAuthCallback, login, afterGoogleLogin };

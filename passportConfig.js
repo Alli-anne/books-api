@@ -10,18 +10,17 @@ const { ObjectId } = require('mongodb');
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,          // from .env
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,  // from .env
-      callbackURL: process.env.GOOGLE_CALLBACK_URL     // from .env
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: process.env.GOOGLE_CALLBACK_URL
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log('=== SUCCESSFUL CALLBACK ===');
+      console.log('Profile:', profile.id, profile.displayName);
       try {
         const db = getDb();
-
-        // Check if user exists in the Users collection
         let user = await db.collection('users').findOne({ googleId: profile.id });
 
-        // If user doesn't exist, create a new user
         if (!user) {
           const result = await db.collection('users').insertOne({
             googleId: profile.id,
@@ -31,9 +30,9 @@ passport.use(
           user = await db.collection('users').findOne({ _id: result.insertedId });
         }
 
-        // Pass user to Passport
         done(null, user);
       } catch (err) {
+        console.error('=== CALLBACK ERROR ===', err);
         done(err, null);
       }
     }
